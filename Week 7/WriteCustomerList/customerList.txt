@@ -1,0 +1,3 @@
+[Customer{ID=1, first='Nico', last='Savage', owe=100.0}
+, Customer{ID=2, first='Joey', last='Savage', owe=200.0}
+]
