@@ -1,5 +1,7 @@
 public class Card {
 
+
+    // Create Enums with method to put all values in an Array
     enum Color {
         Red, Blue, Green, Yellow, Wild;
         
@@ -14,7 +16,7 @@ public class Card {
     enum Value {
         Zero, One, Two, Three, Four, Five, Six, Seven, Eight, Nine, DrawTwo, Skip, Reverse, Wild, WildFour;
 
-        // Throws vakues in an array
+        // Throws values in an array
         private static final Value[] values = Value.values();
 
         public static Value getValue(int i){
@@ -22,10 +24,13 @@ public class Card {
         }
     }
 
+    //------------------------------------------------------------------------------------
+
+    // Create Getters and Constructor
+
     private final Color color;
     private final Value value;
 
-    
 
     public Card(Card.Color color, Card.Value value) {
         this.color = color;

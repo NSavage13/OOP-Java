@@ -8,6 +8,7 @@ public class Game {
     private List<Card> discardPile;
     private Deck drawPile;
     private String winner;
+    private boolean over = false;
 
     public Game(String[] playerNames) {
         players = new ArrayList<>();
@@ -32,13 +33,14 @@ public class Game {
     }
 
     public void playGame() {
-        while (true) {
+        while (over == false) {
             Player player = players.get(currentPlayer);
             System.out.println(player.getName() + "'s turn:");
             System.out.println("Current card: " + discardPile.get(discardPile.size() - 1).getColor() + " " + discardPile.get(discardPile.size() - 1).getValue() + " " + discardPile.get(discardPile.size() - 1).getAction());
             
             if (player.getHand().isEmpty()) {
                 winner = player.getName();
+                over = true;
                 break;
             }
             Card card = null;
@@ -67,12 +69,18 @@ public class Game {
                     }
                 }
                 player.playCard(card, discardPile);
+                if (player.getHand().isEmpty()) {
+                    winner = player.getName();
+                    over = true;
+                    break;
+                }
                 System.out.println(player.getName() + " played " + card.getColor() + " " + card.getValue() + " " + card.getAction() + ".");
                 if (player.checkUno()) {
                     System.out.println(player.getName() + " has UNO!");
                 }
                 if (player.getHand().isEmpty()) {
                     winner = player.getName();
+                    over = true;
                     break;
                 }
                 if (card.getAction() == null || card.getAction().equals("reverse") || card.getAction().equals("wild") || card.getAction().equals("wild draw four")) {
