@@ -116,7 +116,7 @@ public class HedgeYourBet extends JFrame implements ActionListener {
       } catch (IOException ex) {
         System.out.println("Error saving score: " + ex.getMessage());
       }
-
+      
   }
   
   public static void main(String[] args) {
